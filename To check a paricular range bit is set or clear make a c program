@@ -1,0 +1,30 @@
+/******************************************************************************
+To check a paricular range bit is set or clear make a c program
+*******************************************************************************/
+#include <stdio.h>
+
+int main() {
+    unsigned int num, start, end;
+
+    printf("Enter a number: ");
+    scanf("%u", &num);
+
+    printf("Enter start bit position: ");
+    scanf("%u", &start);
+
+    printf("Enter end bit position: ");
+    scanf("%u", &end);
+
+    // Create mask for the range
+    unsigned int mask = ((1U << (end - start + 1)) - 1) << start;
+
+    if ((num & mask) == mask) {
+        printf("Bits %u to %u are ALL SET (1)\n", start, end);
+    } else if ((num & mask) == 0) {
+        printf("Bits %u to %u are ALL CLEAR (0)\n", start, end);
+    } else {
+        printf("Bits %u to %u are MIXED (some set, some clear)\n", start, end);
+    }
+
+    return 0;
+}
