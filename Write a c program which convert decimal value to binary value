@@ -1,0 +1,23 @@
+/******************************************************************************
+Write a c program which convert decimal value to binary value
+*******************************************************************************/
+#include <stdio.h>
+
+int main() {
+    unsigned int num;
+    printf("Enter a decimal number: ");
+    scanf("%u", &num);
+
+    // Print binary representation (32 bits for clarity)
+    printf("Binary representation: ");
+    for (int i = 31; i >= 0; i--) {
+        unsigned int mask = 1U << i;
+        if (num & mask)
+            printf("1");
+        else
+            printf("0");
+    }
+    printf("\n");
+
+    return 0;
+}
